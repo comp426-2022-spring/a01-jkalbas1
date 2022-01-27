@@ -12,11 +12,10 @@ const args = minimist(process.argv.slice(2), {
 })
 
 // Define allowed argument name 'port'.
-var port
 
 // Define a const `port` using the argument from the command line. 
 // Make this const default to port 3000 if there is no argument given for `--port`.
-port = args.port || 3000
+const port = args.port || 3000
 
 // Use the fs module to create an arrow function using `fs.readFile`.
 // Use the documentation for the Node.js `fs` module. 
@@ -25,9 +24,10 @@ port = args.port || 3000
 fs.readFile('./www/index.html', 'utf8', (err, data) => {
     if (err) {
         console.error(err)
-        process.exit(1)
+        return
     }
     console.log(data)
+    server(err, data)
 })
 
 // If there is an error, put it on the console error, return, and exit with error code 1. 
