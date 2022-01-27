@@ -24,7 +24,7 @@ const port = args.port || 3000
 fs.readFile('./www/index.html', 'utf8', (err, data) => {
     if (err) {
         console.error(err)
-        process.exit(1)
+        return
     }
     console.log(data)
 
@@ -32,7 +32,7 @@ fs.readFile('./www/index.html', 'utf8', (err, data) => {
         res.statusCode = 200
         res.setHeader = ('Content-Type', 'text/html')
         res.end(data)
-    })
+    }).listen(port)
 
     server.listen(port, () => {
         console.log(`Server running at port ${port}`)
