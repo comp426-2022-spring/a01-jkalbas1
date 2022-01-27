@@ -8,7 +8,7 @@ const fs = require('fs')
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
 var minimist = require('minimist')
 const args = minimist(process.argv.slice(2), {
-    alias: {port: 'port'}
+    alias: {port: '--port'}
 })
 
 // Define allowed argument name 'port'.
